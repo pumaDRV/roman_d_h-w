@@ -1,0 +1,63 @@
+class Koplika:
+    def __init__(self):
+        self.balance = 100
+        self.target = 0
+    
+    def polozhit(self, amount):
+        if amount <= 0:
+            print("Ошибка")
+            return
+        self.balance += amount
+        print(f"Баланс: {self.balance}")
+    
+    def snyat(self, amount):
+        if amount <= 0:
+            print("Ошибка")
+            return
+        if amount > self.balance:
+            print("Недостаточно")
+            return
+        self.balance -= amount
+        print(f"Баланс: {self.balance}")
+    
+    def postavit_tzel(self, amount):
+        if amount <= 0:
+            print("Ошибка")
+            return
+        self.target = amount
+        print(f"Цель: {self.target}")
+    
+    def hvatit_na_tzel(self):
+        if self.target == 0:
+            print("Нет цели")
+            return
+        
+        if self.balance >= self.target:
+            print(f"Хватает. Баланс: {self.balance}, цель: {self.target}")
+        else:
+            print(f"Не хватает. Баланс: {self.balance}, цель: {self.target}")
+
+
+koplika = Koplika()
+
+while True:
+    command = input()
+    
+    if command == "exit":
+        break
+    elif command.startswith("polozhit "):
+        parts = command.split()
+        amount = float(parts[1])
+        koplika.polozhit(amount)
+    elif command.startswith("snyat "):
+        parts = command.split()
+        amount = float(parts[1])
+        koplika.snyat(amount)
+    elif command.startswith("postavit_tzel "):
+        parts = command.split()
+        amount = float(parts[1])
+        koplika.postavit_tzel(amount)
+    elif command == "hvatit_na_tzel":
+        koplika.hvatit_na_tzel()
+    else:
+        print("Неизвестная команда")
