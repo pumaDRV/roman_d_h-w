@@ -47,15 +47,15 @@ while True:
         break
     elif command.startswith("polozhit "):
         parts = command.split()
-        amount = float(parts[1])
+        amount = int(parts[1])
         koplika.polozhit(amount)
     elif command.startswith("snyat "):
         parts = command.split()
-        amount = float(parts[1])
+        amount = int(parts[1])
         koplika.snyat(amount)
     elif command.startswith("postavit_tzel "):
         parts = command.split()
-        amount = float(parts[1])
+        amount = int(parts[1])
         koplika.postavit_tzel(amount)
     elif command == "hvatit_na_tzel":
         koplika.hvatit_na_tzel()
