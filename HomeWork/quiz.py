@@ -61,7 +61,7 @@ class Quiz:
             if not self.next_question():
                 break
         
-        print(f"\n=== ВИКТОРИНА ЗАВЕРШЕНА! ===")
+        print(f"\n___ ВИКТОРИНА ЗАВЕРШЕНА! ___")
         print(f"Правильных ответов: {self.correct_answers}")
 
 
