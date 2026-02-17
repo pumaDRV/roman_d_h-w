@@ -43,21 +43,37 @@ class Quiz:
         self.current_question_index += 1
         return self.current_question_index < len(self.questions)
     
+    def is_valid_answer(self, answer, question):
+        try:
+            answer = int(answer)
+        except ValueError:
+            print("ОШИБКА: Нужно ввести число!")
+            return False
+        
+        if answer < 0 or answer >= len(question['options']):
+            print(f"ОШИБКА: Введите число от 0 до {len(question['options']) - 1}")
+            return False
+        
+        return True
+    
     def play(self):
         print("___ ДОБРО ПОЖАЛОВАТЬ В ВИКТОРИНУ! ___")
+        print("Для ответа вводите номер варианта (0, 1, 2 и т.д.)")
         
         while self.current_question_index < len(self.questions):
-            self.ask_question()  # Задаем вопрос
-
-            try:       # Получаем ответ 
-                answer = int(input(">> "))  
-                self.check_answer(answer)   # Проверка ответа
-            except ValueError:
-                print("Пожалуйста, введите номер ответа (число)")
-                continue  # к началу цикла
+            question = self.ask_question()  # Задаем вопрос
             
-            # Переходим к следующему вопросу
-            # Если вопросы закончились, выходим из цикла
+            while True:
+                answer = input(">> ")
+                
+                if self.is_valid_answer(answer, question):    # Проверяем корректность ввода
+                    answer = int(answer) 
+                    self.check_answer(answer)
+                    break  # Выходим из цикла повторения вопроса
+                else:
+                    print("Попробуйте снова. Вот варианты ответа:")    # Если ввод некорректен, показываем подсказку
+                    print(question['options'])
+            
             if not self.next_question():
                 break
         
@@ -66,5 +82,5 @@ class Quiz:
 
 
 if __name__ == "__main__":
-    quiz = Quiz()      # Создаемвикторину
+    quiz = Quiz()      # Создаем викторину
     quiz.play()        # Запускаем игру
