@@ -69,6 +69,16 @@ class Playlist:
             for i, song in enumerate(self.songs):
                 current_mark = " ТЕКУЩАЯ" if i == self.current_index else "" # отметка на текущей песне
                 print(f"{i+1}. {song['title']} - {song['artist']}{current_mark}")
+    
+    def first_song(self):
+        if len(self.songs) > 0:  # Проверяем, что плейлист не пуст
+            return self.songs[0]['title']  # Возвращаем название первой песни
+        return None  # Если плейлист пуст, возвращаем None
+    
+    def last_song(self):
+        if len(self.songs) > 0:  # Проверяем, что плейлист не пуст
+            return self.songs[-1]['title']  # Возвращаем название последней песни
+        return None  # Если плейлист пуст, возвращаем None
 
 
 if __name__ == "__main__":
@@ -97,5 +107,21 @@ if __name__ == "__main__":
     print("\n___ Дополнительная демонстрация ___")
     playlist.show_playlist()    # Показываем весь плейлист
     
+    print("\n___ Использование новых функций first_song() и last_song() ___")
+    
+    first = playlist.first_song()  # Вызываем функцию для получения первой песни
+    last = playlist.last_song()    # Вызываем функцию для получения последней песни
+    
+    print(f"Первая песня в плейлисте: {first}")   
+    print(f"Последняя песня в плейлисте: {last}")  
+    
+    print("\n___ Добавляем новую песню и проверяем last_song() ___")
+    playlist.add_song("Billie Jean", "Michael Jackson")
+    print(f"Теперь последняя песня: {playlist.last_song()}")  
+    
     playlist.shuffle()    # Перемешиваем плейлист
     playlist.show_playlist()
+    
+    print(f"\nПосле перемешивания:")
+    print(f"Первая песня: {playlist.first_song()}")    # Показывает новую первую песню
+    print(f"Последняя песня: {playlist.last_song()}")   # Показывает новую последнюю песню
