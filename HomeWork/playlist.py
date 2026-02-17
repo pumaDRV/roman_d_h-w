@@ -65,7 +65,7 @@ class Playlist:
         if len(self.songs) == 0:
             print("Плейлист пуст")
         else:
-            print("\n=== ТЕКУЩИЙ ПЛЕЙЛИСТ ===")
+            print("\n___ ТЕКУЩИЙ ПЛЕЙЛИСТ ___")
             for i, song in enumerate(self.songs):
                 current_mark = " ТЕКУЩАЯ" if i == self.current_index else "" # отметка на текущей песне
                 print(f"{i+1}. {song['title']} - {song['artist']}{current_mark}")
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     playlist.next()
     print(playlist.current_song())
     
-    print("\n--- Дополнительная демонстрация ---")
+    print("\n___ Дополнительная демонстрация ___")
     playlist.show_playlist()    # Показываем весь плейлист
     
     playlist.shuffle()    # Перемешиваем плейлист
