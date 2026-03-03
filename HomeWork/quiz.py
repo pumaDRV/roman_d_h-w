@@ -50,6 +50,7 @@ class Quiz:
             print("ОШИБКА: Нужно ввести число!")
             return False
         
+
         if answer < 0 or answer >= len(question['options']):
             print(f"ОШИБКА: Введите число от 0 до {len(question['options']) - 1}")
             return False
@@ -58,7 +59,7 @@ class Quiz:
     
     def play(self):
         print("___ ДОБРО ПОЖАЛОВАТЬ В ВИКТОРИНУ! ___")
-        print("Для ответа вводите номер варианта (0, 1, 2 и т.д.)")
+        print("Для ответа вводите номер варианта (0, 1, 2)")
         
         while self.current_question_index < len(self.questions):
             question = self.ask_question()  # Задаем вопрос
