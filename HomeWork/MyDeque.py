@@ -1,17 +1,17 @@
 class MyDeque:
-    def init(self, items=None):
+    def __init__(self, items=None):
         if items is None:
             self._items = []
         else:
             self._items = list(items)
 
-    def len(self):
+    def __len__(self):
         return len(self._items)
 
-    def str(self):
+    def __str__(self):
         return f"Deque({self._items})"
 
-    def repr(self):
+    def __repr__(self):
         return str(self)
 
     def append(self, x):
@@ -37,7 +37,7 @@ class MyDeque:
         return self._items.pop(0)
 
 
-if name == "main":
+if __name__ == "__main__":
     print("Проверка MyDeque")
     print("-" * 40)
 

@@ -1,22 +1,22 @@
 class Vector2D:
-    def init(self, x=0, y=0):
+    def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
 
-    def len(self):
-        squared_x = self.x  2
-        squared_y = self.y  2
+    def __len__(self):
+        squared_x = self.x  
+        squared_y = self.y  
         length_value = (squared_x + squared_y) ** 0.5
         rounded_length = round(length_value)
         return rounded_length
 
-    def str(self):
+    def __str__(self):
         return f"Vector({self.x}, {self.y})"
 
-    def repr(self):
+    def __repr__(self):
         return str(self)
 
-    def add(self, other):
+    def __add__(self, other):
         # Складываем два вектора покоординатно.
         if isinstance(other, Vector2D):
             new_x = self.x + other.x
@@ -24,19 +24,19 @@ class Vector2D:
             result_vector = Vector2D(new_x, new_y)
             return result_vector
 
-        return NotImplemented
+        raise TypeError
 
-    def eq(self, other):
+    def __eq__(self, other):
         # Векторы равны, если совпадают обе координаты.
         if isinstance(other, Vector2D):
             x_is_equal = self.x == other.x
             y_is_equal = self.y == other.y
             return x_is_equal and y_is_equal
 
-        return NotImplemented
+        raise TypeError
 
 
-if name == "main":
+if __name__ == "__main__":
     print("Проверка Vector2D")
     print("-" * 40)
 
