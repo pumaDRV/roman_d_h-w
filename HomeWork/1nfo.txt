@@ -1,0 +1,4 @@
+cd /home/puma_drv/study/roman_d_h-w/HomeWork/lab
+python3 -m venv venv
+. ./venv/bin/activate
+uvicorn myserver:app --reload
